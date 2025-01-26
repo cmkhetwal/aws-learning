@@ -104,14 +104,16 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-e
 Only the used EBS is charged, like if the ebs volume is of 10 gb but the data inside it is 5 gb, so you will be charged for 5 gb only
 
 Instance Store data will be gone after you stop the server then start the server. you will have to create the filesystem again
-
-wordpress yml 
+=====================================================================================================================================================================================================
+wordpress yml :- this will only create ec2 in public network, we have to install wordpress manually 
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=WORDPRESS
+
+Install wordpress from scripts folders:-
 
 
 manual wordpress
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt
-
+=====================================================================================================================================================================================================
 blog images folder for wordpress
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip
 
@@ -120,3 +122,10 @@ https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/crea
 
 steps on ec2
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt
+
+================================================================================================================================================================================================
+Instance Metadata example:-
+ec2 deploy yml :- https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0009-aws-associate-ec2-instance-metadata/A4L_VPC_PUBLICINSTANCE.yaml&stackName=METADATA
+
+Lesson Commands:- https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0009-aws-associate-ec2-instance-metadata/lesson_commands.txt
+======================================================================================================================================================================================================
