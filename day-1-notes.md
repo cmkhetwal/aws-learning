@@ -104,30 +104,24 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-e
 Only the used EBS is charged, like if the ebs volume is of 10 gb but the data inside it is 5 gb, so you will be charged for 5 gb only
 
 Instance Store data will be gone after you stop the server then start the server. you will have to create the filesystem again
-=====================================================================================================================================================================================================
-wordpress yml :- this will only create ec2 in public network, we have to install wordpress manually 
-https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=WORDPRESS
 
-Install wordpress from scripts folders:- wordpress.sh
+wordpress yml 
+https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=WORDPRESS
 
 
 manual wordpress
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt
-=====================================================================================================================================================================================================
+
 blog images folder for wordpress
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip
 
 AMI yml
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=AMIDEMO
 
-For installing package for creating AMI use scipt from scripts folder :- for-ami-script.sh
-
 steps on ec2
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt
 
-================================================================================================================================================================================================
-Instance Metadata example:-
-ec2 deploy yml :- https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0009-aws-associate-ec2-instance-metadata/A4L_VPC_PUBLICINSTANCE.yaml&stackName=METADATA
+Instance status checks and recovery : https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0022-aws-associate-ec2-statuschecksandterminateprotection/A4L_VPC_PUBLICINSTANCE.yaml&stackName=STATUSCHECKSANDPROTECT
 
-Lesson Commands:- https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0009-aws-associate-ec2-instance-metadata/lesson_commands.txt
-======================================================================================================================================================================================================
+what will be lost and saved when does auto recovery :
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
