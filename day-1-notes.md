@@ -108,7 +108,7 @@ Instance Store data will be gone after you stop the server then start the server
 wordpress yml :- this will only create ec2 in public network, we have to install wordpress manually 
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=WORDPRESS
 
-Install wordpress from scripts folders:-
+Install wordpress from scripts folders:- wordpress.sh
 
 
 manual wordpress
@@ -120,7 +120,7 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-e
 AMI yml
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=AMIDEMO
 
-For installing package for creating AMI use scipt from scripts folder
+For installing package for creating AMI use scipt from scripts folder :- for-ami-script.sh
 
 steps on ec2
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt
