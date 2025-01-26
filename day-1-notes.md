@@ -120,6 +120,8 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-e
 AMI yml
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&stackName=AMIDEMO
 
+For installing package for creating AMI use scipt from scripts folder
+
 steps on ec2
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt
 
