@@ -110,6 +110,39 @@ test and verify you can do whatever you want
 then click on switch back from the right top menu to go back to iamadmin account of master account
 ========================================================================================================================================
 
+Service Control Policies- demo
+
+first add the aws account in your organization like above
+then select the root check box and click on actions then click create new OU
+name it like prod
+then select the check box of prod account then click on actions and then click on move
+now select the prod ou to confirm the move
+
+now select policies from left and click on service control policies
+now click on enable service control policies
+then create new policy
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": "s3:*",
+            "Resource": "*"
+        }
+    ]
+}
+save it
+then click on aws prod account and click on policies
+click on attach policy that you have created and remove the previous attached policy
+
+now switch role to prod account and you will not be able to do anything in s3
+==========================================================================================================
+
 
 
 
