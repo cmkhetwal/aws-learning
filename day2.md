@@ -14,7 +14,10 @@ https://aws.amazon.com/identity/federation/
 
 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
 
-Simple Identity Permissions in AWS demo:-
+
+
+==============================================================================================================================================================================================================================================================================
+**Simple Identity Permissions in AWS demo**
 
 first demo manually for creating user and giving permission
 
@@ -23,6 +26,14 @@ https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/crea
 
 files and permission for below demo
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0052-aws-mixed-iam-simplepermissions/simpleidentitypermissions.zip
+For Deny permission steps:-
+click on add permission
+click on add permission
+click on attach policies directly
+filter type choose customer managed
+select AllowAllS3ExceptCats permission which is created by Cloudformation and apply
+Now go and check wether sally can access cats buckets
+
 
 first attach full s3 access then check the upload and delete
 
@@ -32,14 +43,17 @@ then cats bucket is denied and other buckets are allowed
 
 before stack deletion empty the buckets and remove attached policy from the user
 
-======================================================================================================================================
+==============================================================================================================================================================================================================================================================================
+
+
 all 5000 users can be part of a single group
 
 we can not have nested groups in aws, only one group and assign permissions to it
 
 we assign direct permissions to a group, it can not be refrenced in any service or policy, like if a attach a policy in s3, in that s3 policy i can not refrence group,  like i can refrence user with its arn
 
-Permissions control using IAM Groups Demo:-
+==============================================================================================================================================================================================================================================================================
+**Permissions control using IAM Groups Demo:-**
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0023-aws-associate-iam-groups/groupsdemoinfrastructure.yaml&stackName=IAMGROUPS
 
 demo file link : https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0023-aws-associate-iam-groups/permissionsgroups.zip
