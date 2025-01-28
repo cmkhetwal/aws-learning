@@ -101,8 +101,14 @@ aws Notes : https://github.com/Ernyoke/certified-aws-solutions-architect-associa
 
 aws notes : https://github.com/keenanromain/AWS-SAA-C02-Study-Guide
 
+===================================================================================================================================================================================================================================================================
 instance store volumes
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/adding-instance-storage-instance.html
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/adding-instance-storage-instance.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/adding-instance-storage-instance.html
+Only Specified Machine types will have Instance Store Option
+such as C1, C3, M1, M2, M3, R3, D2, H1, I2, X1, and X1e
+===================================================================================================================================================================================================================================================================
+
+
 
 ================================================================================================================================================================================================================================================================
 **This will create 3 ec2 instance for ebs and efs practical**
