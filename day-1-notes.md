@@ -150,3 +150,83 @@ https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/crea
 what will be lost and saved when does auto recovery :
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
 =================================================================================================================================================================================================================================================================
+
+Create Website / ADD Load balancer / Map Domain to LB as Alias / Add SSL / create Autoscale by hit counts
+
+Create Ec2 with image created
+add apache2 and add website content
+Steps for Apache and website:-
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo mkdir /var/www/mountain-site
+sudo chown -R $USER:$USER /var/www/mountain-site
+sudo chmod -R 755 /var/www/mountain-site
+sudo apt install php libapache2-mod-php -y
+sudo systemctl restart apache2
+vim /var/www/mountain-site/index.php
+====
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Mountain Site</title>
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/1324803/pexels-photo-1324803.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome from <?php echo gethostname(); ?></h1>
+</body>
+</html>
+======
+sudo vim /etc/apache2/sites-available/mountain-site.conf
+===
+<VirtualHost *:80>
+    ServerAdmin webmaster@your-domain.com
+    DocumentRoot /var/www/mountain-site
+    ServerName mountains.infomofighters.xyz
+    ServerAlias www.mountains.infomofighters.xyz
+
+    <Directory /var/www/mountain-site>
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+===
+sudo a2ensite mountain-site.conf
+sudo systemctl reload apache2
+Test the Website with public ip
+
+check if the website is running
+add load balancer and in target group add intance first 80 then 443 rule after certificate issued
+certificate from aws are free
+now from route53 point the website to lb
+check the website is running
+for opening the website in https, add https allow from 0.0.0.0 in LB security group
+now check with https url or the website will auto go to https only
+
+now create a launch template from this image
+
