@@ -153,7 +153,6 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
 
 Create Website / ADD Load balancer / Map Domain to LB as Alias / Add SSL / create Autoscale by hit counts
 
-Create Ec2 with image created
 add apache2 and add website content
 Steps for Apache and website:-
 sudo apt update
@@ -228,5 +227,16 @@ check the website is running
 for opening the website in https, add https allow from 0.0.0.0 in LB security group
 now check with https url or the website will auto go to https only
 
-now create a launch template from this image
+Create image of this EC2 instance
+Once Image is Ready, Use this same image to create launch template
+then via this launch template create auto scaling group
+put limit of 10 in request for per ec2
+put warm time to 60 seconds
+once the desired configuration don in scaling group, let it come in ready state
+
+now run the curl request in loop with mentioned command
+while true; do   seq 1 200 | xargs -n 1 -P 200 curl -s -o /dev/null -w "%{http_code}\n" "https://mountains.infomofighters.xyz"; done
+This curl will keep hiting you LB and give response to you , now wait until 15 minutes , then you can check new ec2 instances are launched
+once launched you can press ctrl c to stop while loop, again wait for 15 minutes and see if the instances are terminated
+
 
