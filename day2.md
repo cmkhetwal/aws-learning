@@ -99,17 +99,18 @@ this time we have not configured any aws credentials in ec2, ec2 is accessing th
 organisation accounts : https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
 
 for this we join many aws accounts to single master account
-this can be used like if our finance departments wants to clear all payments for our 100 aws account, they do not want to login to each account and pay the payment.
+this can be used like if our finance departments wants to clear all payments for our 100 aws account, they do not want to login to each account and pay the payment
 so here they will login once in master then access all other accounts within this account
 
 for this first login to devops account using iam user iamadmin
 then go to aws organizations
-select existing aws account
-add prod account id and send invite
+select add existing aws account
+add prod account id in AWS Account name and send invite to email address associated with that account
+IAM Role will be auto coming as OrganizationAccountAccessRole
 
 then go to prod aws account and go to aws organizations
 accept the invitation
-then go to iam and create role for aws account with full administrator access
+then go to iam of prod aws and create role for devops aws account with full administrator access
 in the role add account id of devops account and permission to full administrator
 
 now go back to iamadmin account of devops/master aws account
