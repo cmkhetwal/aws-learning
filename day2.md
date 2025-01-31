@@ -37,7 +37,7 @@ Now go and check wether sally can access cats buckets
 
 first attach full s3 access then check the upload and delete
 
-then remove full permission and attach the policy created by cloudformation which is AllowAllS3ExceptCats
+then remove full permission and attach the policy created by cloudformation which is **AllowAllS3ExceptCats**
 
 then cats bucket is denied and other buckets are allowed
 
@@ -64,8 +64,9 @@ then check the permissions on s3
 upload the files from downloaded zip
 then remove the direct permission from sally
 then create a group called developers
-then attach the same policy to this group
-then add sally to this group
+add sally to this group
+then attach the policy create by CF which is **IAMGROUPS-AllowAllS3ExceptCats-znQ9QrxroohT**
+
 
 cleaning
 remove the policy from group
