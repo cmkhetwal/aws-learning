@@ -239,4 +239,134 @@ while true; do   seq 1 200 | xargs -n 1 -P 200 curl -s -o /dev/null -w "%{http_c
 This curl will keep hiting you LB and give response to you , now wait until 15 minutes , then you can check new ec2 instances are launched
 once launched you can press ctrl c to stop while loop, again wait for 15 minutes and see if the instances are terminated
 
+============================
+**Steps for IIS in Windows**
+============================
+Step 1: Install IIS (Internet Information Services)
+Open the Control Panel.
+
+Go to Programs > Programs and Features > Turn Windows features on or off.
+
+In the Windows Features dialog, expand Internet Information Services.
+
+Enable the following:
+
+Web Management Tools > IIS Management Console
+
+World Wide Web Services > Application Development Features > CGI (for PHP support)
+
+World Wide Web Services > Common HTTP Features (ensure all options are checked)
+
+Click OK and wait for the installation to complete.
+
+Step 2: Install PHP
+Download the latest version of PHP for Windows from the official PHP website: https://windows.php.net/download/.
+
+Choose the Non-Thread Safe (NTS) version for IIS.
+
+Extract the downloaded ZIP file to a directory, e.g., C:\PHP.
+
+Rename the php.ini-development file to php.ini.
+
+Open the php.ini file in a text editor and make the following changes:
+
+Uncomment (remove the ;) the following lines:
+extension_dir = "ext"
+extension=mysqli
+extension=curl
+extension=gd
+extension=mbstring
+Save and close the file
+
+Step 3: Configure IIS to Use PHP
+Open the IIS Manager:
+
+Press Win + R, type inetmgr, and press Enter.
+
+In the left-hand pane, select your server name.
+
+Double-click Handler Mappings.
+
+In the right-hand pane, click Add Module Mapping.
+
+Fill in the following details:
+
+Request path: *.php
+
+Module: FastCgiModule
+
+Executable: Browse to the php-cgi.exe file in your PHP installation directory (e.g., C:\PHP\php-cgi.exe).
+
+Name: PHP
+
+Click OK and confirm any prompts.
+
+Step 4: Create the Website Directory
+Create a directory for your website, e.g., C:\inetpub\mountain-site.
+
+Inside this directory, create a file named index.php with the following content:
+========
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Mountain Site</title>
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/1324803/pexels-photo-1324803.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome from <?php echo gethostname(); ?></h1>
+</body>
+</html>
+========
+Step 5: Configure the Website in IIS
+Open the IIS Manager.
+
+In the left-hand pane, right-click Sites and select Add Website.
+
+Fill in the following details:
+
+Site name: MountainSite
+
+Physical path: C:\inetpub\mountain-site
+
+Binding:
+
+Type: http
+
+IP address: All Unassigned
+
+Port: 80
+
+Host name: mountains.infomofighters.xyz
+
+Click OK.
+
+Configure a Default Document in IIS
+At the level of the server first, click the IIS Manager open and choose default document
+Fill “index.php” in the space
+add view permission for IIS_IUSRS in your site folder
+now check if you are able to open the website with your domain
+==================================================================================================================================================================================================================
+
+
 
