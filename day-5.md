@@ -132,6 +132,8 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-r
 
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/blog_images.zip
 
+**delete the default inbound rule from rds security group and readd which allows instance security group to communicate with RDS**
+
 ==================================================================================================================================================================================================================
 
 
