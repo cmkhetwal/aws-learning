@@ -71,7 +71,7 @@ Attach the role to the EC2 instance created by the 1-click deployment.
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 # Accept all defaults, until default metrics .. pick advanced.
 
-when it ask for agent use root not cwagent
+**when it ask for agent use root not cwagent**
 
 # then when asking for log files to monitor
 
