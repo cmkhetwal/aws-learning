@@ -134,6 +134,61 @@ https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-r
 
 **delete the default inbound rule from rds security group and readd which allows instance security group to communicate with RDS**
 
+
+Migrating EC2 DB into RDS - Demo
+https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/A4L_WORDPRESS_AND_EC2DB_AL2023.yaml&stackName=MIGRATE2RDS
+
+https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/lesson_commands.txt
+
+https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/blog_images.zip
+
+
+https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0035-aws-associate-rds-snapshot-and-multiaz/A4L_WORDPRESS_AND_RDS_AL2023.yaml&stackName=RDSMULTIAZSNAP&param_DBVersion=8.0.32
+
+Once the ec2 has loaded, launch the wordpress from it and create a blog page with images
+use the below link to download images
+https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0035-aws-associate-rds-snapshot-and-multiaz/blog_images.zip
+
+upload these images in wordpress blog and publish
+
+now check the blog page
+
+take the snaphot of rds
+CALL YOUR SNAPSHOT : "a4lwordpress-with-cat-post-mysql-8032"
+
+After you deploy RDS first we will enable multi region az support only  #this will take some time so wait
+do not change the identifier name in the upcoming page
+just select multi az and click on submit
+Once multi AZ is ready test by rebooting
+to test multi region support , we can do reboot of current rds and choose reboot with failover
+in failover the current standby rds will become active and the current one will go to standby
+
+when you do this you can refresh the page and see , until the new rds is not shifted till then the page will not load
+
+RDS shanpshot restore Demo:-
+Note:- you wont be able to restore this snapshot in same rds instance, Snapshot restore will always create the new rds instance, of which name you need to change in your application once it is ready
+
+You application will running with connection to old rds instance, on rds you are just changing the pointing
+
+But if you dont want to make rds instance again and agin, then setup a backup script on the server, which will be taking backups of your rds , and storing it where you want, like s3 or local server
+
+https://repost.aws/knowledge-center/restore-rds-instance-from-snapshot # this is the amazon link where it is mentioned that we wont be able to restore this snapshot in same rds instance
+
+restore steps:-
+go to snapshot, and select the snapshot, you want to restore and click on actions then restore snapshot
+Availability and durability = select whateve you want to select as per business needs
+DB instance identifier = whatever-you-want-to-call-it
+select vpc and security group which are created or create new
+rest leave at it default until you want to
+click on restore db instance
+Once the new rds instance is ready , copy its cname value and paste it in your application, like in ours we are doing it for wordpress application
+login to ec2
+run
+sudo vim /var/www/html/wp-config.php
+replace the value in dbhost
+:wq! to save the file
+now refresh the page you will get the old data which was there in snapshot
+
 ==================================================================================================================================================================================================================
 
 
