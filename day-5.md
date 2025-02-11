@@ -118,21 +118,46 @@ Delete the CloudWatchRole instance role you created.
 
 RDS Demo:-
 Splitting Wordpress Monolith => APP & DB
-https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0014-aws-associate-rds-dbonec2/A4L_WORDPRESS_ALLINONE_AND_EC2DB_AL2023.yaml&stackName=MONOLITHTOEC2DB
+https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0014-aws-associate-rds-dbonec2/A4L_WORDPRESS_ALLINONE_AND_EC2DB_AL2023.yaml&stackName=MONOLITHTOEC2DB -------> **The application db is installed on the same wordpress machine, need to shift db to db instance**
 
-https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0014-aws-associate-rds-dbonec2/lesson_commands.txt
-
+Download files to put in blog page of wordpress
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0014-aws-associate-rds-dbonec2/blog_images.zip
+
+Once the images are pushed then publish 
+
+Now the data is in server db  ...............>
+
+Now we will move the db backup to db instance from below steps
+https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0014-aws-associate-rds-dbonec2/lesson_commands.txt
 
 
 Migrating EC2 DB into RDS - Demo
-https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/A4L_WORDPRESS_AND_EC2DB_AL2023.yaml&stackName=MIGRATE2RDS
+https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/A4L_WORDPRESS_AND_EC2DB_AL2023.yaml&stackName=MIGRATE2RDS ----> **here application and db are on diffrent machines, install rds manually from GUI and then push the db backup to RDS**
+
+RDS Steps:-
+Go to rds and create subnet group first
+now create the rds with following details
+
+DBName
+a4lwordpress
+-
+DBPassword
+4n1m4ls4L1f3
+
+DBUser
+a4lwordpress
+
+Initial db name should be same or whatever you want, here we are using same db name as **a4lwordpress**
+
+Once ready change delete the rule in rds security group and add ec2 security group to allow
+
+**delete the default inbound rule from rds security group and readd which allows instance security group to communicate with RDS**
 
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/lesson_commands.txt
 
 https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0015-aws-associate-rds-migrating-to-rds/blog_images.zip
 
-**delete the default inbound rule from rds security group and readd which allows instance security group to communicate with RDS**
+
 
 
 Migrating EC2 DB into RDS - Demo
