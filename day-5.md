@@ -115,6 +115,47 @@ Delete the CwLog Groups for /var/log/secure, /var/log/httpd/access_log & /var/lo
 Delete the CloudWatchRole instance role you created.
 
 ==================================================================================================================================================================================================================
+****Instruction for Event Notofication via SNS ( For any Application )**
+Go to the CloudWatch Console:
+
+Navigate to CloudWatch in the AWS Management Console.
+Navigate to Logs:
+
+In the left-hand menu, click Logs.
+Select the log group where your Apache access logs are being pushed.
+like : /var/log/access.log
+next to Anomaly detection select Metric filters
+Create a Metric Filter:
+
+Under Log Streams, select the log stream that contains your Apache logs.
+Click Create Metric Filter.
+Define the Filter Pattern:
+
+Enter the following filter pattern:
+
+"103.93.115.84|103.99.14.194"
+
+
+103.93.115.84  #here i am taking only one ip as an attacker ip , so this goes high i should be notified
+
+This pattern will match either 103.93.115.84 or 103.99.14.194 in your logs.
+Create the Metric:
+
+After defining the filter pattern, assign a Metric Name (e.g., MatchedIPsCount).
+Set the Metric Namespace (e.g., MyAppNamespace).
+Set the Metric Value to 1.
+Create the Metric Filter:
+
+Click Create Filter.
+
+Set Up a CloudWatch Alarm
+
+go to /var/log/httpd/access_log log group
+next to Anomaly detection select Metric filters and select the metric you have create and then click on create alarm with this metric
+
+**then set the sns email if not set already otherwise use the already topic**
+
+==================================================================================================================================================================================================================
 
 RDS Demo:-
 Splitting Wordpress Monolith => APP & DB
